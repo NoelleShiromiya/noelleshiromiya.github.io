@@ -8,6 +8,8 @@ body {
     background-repeat: repeat;
     background-attachment: fixed;
     padding: 16px;
+    margin-right: auto;
+    margin-left: auto;
     width: 100%;
     max-width: 1200px;
 }
