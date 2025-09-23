@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第二次汉字简化方案（草案）转换器</title>
+</head>
+<body>
+        <header>
+            <h1>第二次汉字简化方案（草案）转换器</h1>
+            <p style="font-size:0.8em;">原字与简化字对照查询工具</p>
+        </header>
+        <div>
+            <p>本工具展示《第二次汉字简化方案（草案）》（1977年）中提出的简化字与原字的对照关系。该方案因存在过度简化、破坏汉字系统等问题，于1986年被正式废止。这些简化字如今已不再使用，仅供研究和历史参考。</p>
+        </div>
+        <div>
+            <input type="text" id="searchInput" placeholder="输入汉字进行搜索……">
+            <button id="searchBtn">搜索</button>
+        </div>
+        <div>
+            <div>
+                <div>输入原字</div>
+                <textarea id="originalText" placeholder="请输入要转换的原字……"></textarea>
+            </div>
+            <div>
+                <div>简化字结果</div>
+                <textarea id="simplifiedText" readonly></textarea>
+            </div>
+        </div>
+        
+        <button id="convertBtn">转换为简化字</button>
+        
+        <div>
+            <h2>简化字对照表（共 248 组）</h2>
+            <table id="charTable">
+                <thead>
+                    <tr>
+                        <th width="15%">序号</th>
+                        <th width="35%">原字</th>
+                        <th width="35%">简化字</th>
+                        <th width="15%">状态</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                    <!-- 表格内容将通过JavaScript动态生成 -->
+                </tbody>
+            </table>
+            
+            <div id="pagination">
+                <!-- 分页按钮将通过JavaScript动态生成 -->
+            </div>
+        </div>
+        
+        <footer>
+            <p>注意：本工具仅用于历史研究和参考，这些简化字已不再具有规范效力，请勿在实际应用中使用。</p>
+        </footer>
+
+    <script>
+        // 简化字对照数据
+        const charData = [
+            { original: "懊", simplified: "㤇" },
+            { original: "芭", simplified: "巴" },
+            { original: "笆", simplified: "巴" },
+            { original: "粑", simplified: "巴" },
+            { original: "帮", simplified: "邦" },
+            { original: "爆", simplified: "𤆊" },
+            { original: "蓖", simplified: "芘" },
+            { original: "篦", simplified: "芘" },
+            { original: "蔽", simplified: "芘" },
+            { original: "弊", simplified: "𰐉" },
+            { original: "壁", simplified: "坒" },
+            { original: "萹", simplified: "扁" },
+            { original: "藊", simplified: "扁" },
+            { original: "稨", simplified: "扁" },
+            { original: "摒", simplified: "屏" },
+            { original: "病", simplified: "疒" },
+            { original: "播", simplified: "抪" },
+            { original: "部", simplified: "ㄗ" },
+            { original: "彩", simplified: "采" },
+            { original: "餐", simplified: "歺" },
+            { original: "舱", simplified: "仓" },
+            { original: "藏", simplified: "䒙" },
+            { original: "衩", simplified: "叉" },
+            { original: "扠", simplified: "叉" },
+            { original: "杈", simplified: "叉" },
+            { original: "汊", simplified: "叉" },
+            { original: "撤", simplified: "𢪃" },
+            { original: "瞅", simplified: "𥄨" },
+            { original: "矗", simplified: "𰅹" },
+            { original: "葱", simplified: "茐" },
+            { original: "答", simplified: "荅" },
+            { original: "蛋", simplified: "旦" },
+            { original: "弹", simplified: "𰐔" },
+            { original: "蹈", simplified: "𰸁" },
+            { original: "稻", simplified: "𰨛" },
+            { original: "道", simplified: "辺" },
+            { original: "殿", simplified: "𡱒" },
+            { original: "叮", simplified: "丁" },
+            { original: "盯", simplified: "丁" },
+            { original: "钉", simplified: "丁" },
+            { original: "靪", simplified: "丁" },
+            { original: "董", simplified: "苳" },
+            { original: "懂", simplified: "㤏" },
+            { original: "短", simplified: "𰦓" },
+            { original: "蹲", simplified: "𧿬" },
+            { original: "燉", simplified: "炖" },
+            { original: "贰", simplified: "弍" },
+            { original: "愤", simplified: "忿" },
+            { original: "孵", simplified: "孚" },
+            { original: "伕", simplified: "夫" },
+            { original: "富", simplified: "𫲷" },
+            { original: "副", simplified: "付" },
+            { original: "秆", simplified: "杆" },
+            { original: "竿", simplified: "杆" },
+            { original: "钩", simplified: "勾" },
+            { original: "罐", simplified: "𰭃" },
+            { original: "灌", simplified: "浂" },
+            { original: "盥", simplified: "浂" },
+            { original: "鳜", simplified: "桂" },
+            { original: "裹", simplified: "果" },
+            { original: "薅", simplified: "䒵" },
+            { original: "盒", simplified: "合" },
+            { original: "葫", simplified: "胡" },
+            { original: "猢", simplified: "胡" },
+            { original: "蝴", simplified: "胡" },
+            { original: "糊", simplified: "胡" },
+            { original: "毁", simplified: "毁" },
+            { original: "籍", simplified: "笈" },
+            { original: "建", simplified: "迠" },
+            { original: "豇", simplified: "江" },
+            { original: "酱", simplified: "𪧷" },
+            { original: "跤", simplified: "交" },
+            { original: "椒", simplified: "茭" },
+            { original: "街", simplified: "亍" },
+            { original: "阱", simplified: "井" },
+            { original: "境", simplified: "㘫" },
+            { original: "镜", simplified: "𰽟" },
+            { original: "韭", simplified: "艽" },
+            { original: "酒", simplified: "氿" },
+            { original: "橘", simplified: "桔" },
+            { original: "镢", simplified: "𰽤" },
+            { original: "䦆", simplified: "𰽤" },
+            { original: "慷", simplified: "忼" },
+            { original: "靠", simplified: "俈" },
+            { original: "款", simplified: "𤘯" },
+            { original: "蓝", simplified: "兰" },
+            { original: "篮", simplified: "兰" },
+            { original: "澜", simplified: "㳕" },
+            { original: "滥", simplified: "㳕" },
+            { original: "谰", simplified: "𰵟" },
+            { original: "懒", simplified: "𰑐" },
+            { original: "缆", simplified: "𰬊" },
+            { original: "磊", simplified: "𰦫" },
+            { original: "荔", simplified: "艻" },
+            { original: "璃", simplified: "玏" },
+            { original: "量", simplified: "𰅊" },
+            { original: "潦", simplified: "了" },
+            { original: "僚", simplified: "𠆨" },
+            { original: "燎", simplified: "𰝶" },
+            { original: "寮", simplified: "㝋" },
+            { original: "寥", simplified: "㝋" },
+            { original: "廖", simplified: "𭙏" },
+            { original: "磷", simplified: "砱" },
+            { original: "龄", simplified: "令" },
+            { original: "溜", simplified: "𰜈" },
+            { original: "遛", simplified: "𰜈" },
+            { original: "熘", simplified: "𰜈" },
+            { original: "馏", simplified: "𰜈" },
+            { original: "掳", simplified: "虏" },
+            { original: "慢", simplified: "𭜌" },
+            { original: "帽", simplified: "𫷀" },
+            { original: "貌", simplified: "皃" },
+            { original: "煤", simplified: "𭳿" },
+            { original: "幕", simplified: "𫯜" },
+            { original: "虐", simplified: "𰀂" },
+            { original: "漆", simplified: "㲺" },
+            { original: "歧", simplified: "岐" },
+            { original: "器", simplified: "𫩏" },
+            { original: "谦", simplified: "𰵋" },
+            { original: "潜", simplified: "汘" },
+            { original: "歉", simplified: "欠" },
+            { original: "墙", simplified: "垟" },
+            { original: "勤", simplified: "𰅉" },
+            { original: "渠", simplified: "洰" },
+            { original: "嚷", simplified: "𠮵" },
+            { original: "壤", simplified: "圵" },
+            { original: "儒", simplified: "𰁡" },
+            { original: "赛", simplified: "𡧳" },
+            { original: "煽", simplified: "扇" },
+            { original: "搧", simplified: "扇" },
+            { original: "绱", simplified: "上" },
+            { original: "鞝", simplified: "上" },
+            { original: "杓", simplified: "勺" },
+            { original: "输", simplified: "𰹰" },
+            { original: "爽", simplified: "𰋜" },
+            { original: "私", simplified: "厶" },
+            { original: "算", simplified: "祘" },
+            { original: "泰", simplified: "太" },
+            { original: "檀", simplified: "枟" },
+            { original: "糖", simplified: "𰪩" },
+            { original: "套", simplified: "𰋛" },
+            { original: "腾", simplified: "𱅑" },
+            { original: "停", simplified: "仃" },
+            { original: "稳", simplified: "𮂹" },
+            { original: "舞", simplified: "午" },
+            { original: "稀", simplified: "希" },
+            { original: "熄", simplified: "息" },
+            { original: "瞎", simplified: "𰥌" },
+            { original: "镶", simplified: "𰽙" },
+            { original: "橡", simplified: "𬂭" },
+            { original: "萧", simplified: "肖" },
+            { original: "鞋", simplified: "𰆻" },
+            { original: "信", simplified: "伩" },
+            { original: "雄", simplified: "厷" },
+            { original: "修", simplified: "㣊" },
+            { original: "宣", simplified: "㝉" },
+            { original: "癣", simplified: "㾌" },
+            { original: "靴", simplified: "𰆳" },
+            { original: "雪", simplified: "𫜹" },
+            { original: "阎", simplified: "闫" },
+            { original: "演", simplified: "𰛑" },
+            { original: "耀", simplified: "𭀦" },
+            { original: "矅", simplified: "𭀦" },
+            { original: "意", simplified: "𰐺" },
+            { original: "臆", simplified: "肊" },
+            { original: "翼", simplified: "𰭝" },
+            { original: "迎", simplified: "迊" },
+            { original: "影", simplified: "𢒈" },
+            { original: "臃", simplified: "𦙸" },
+            { original: "游", simplified: "沋" },
+            { original: "愉", simplified: "𢖳" },
+            { original: "遇", simplified: "迂" },
+            { original: "预", simplified: "予" },
+            { original: "豫", simplified: "予" },
+            { original: "圆", simplified: "元" },
+            { original: "原", simplified: "𰆖" },
+            { original: "源", simplified: "沅" },
+            { original: "缘", simplified: "𰫾" },
+            { original: "赞", simplified: "𰷣" },
+            { original: "𪧦", simplified: "𰌻" },
+            { original: "账", simplified: "帐" },
+            { original: "辙", simplified: "𰹹" },
+            { original: "整", simplified: "𰋞" },
+            { original: "籽", simplified: "子" },
+            { original: "嘴", simplified: "咀" },
+            { original: "座", simplified: "坐" },
+            { original: "鼻", simplified: "𢍂" },
+            { original: "鼾", simplified: "𰯶" },
+            { original: "察", simplified: "𰌵" },
+            { original: "嚓", simplified: "𰌵" },
+            { original: "擦", simplified: "𰓣" },
+            { original: "感", simplified: "𫹯" },
+            { original: "撼", simplified: "𰓭" },
+            { original: "憾", simplified: "𰑞" },
+            { original: "冀", simplified: "丠" },
+            { original: "骥", simplified: "𱅌" },
+            { original: "具", simplified: "𰋙" },
+            { original: "留", simplified: "畄" },
+            { original: "榴", simplified: "𰗶" },
+            { original: "瘤", simplified: "𰣲" },
+            { original: "眉", simplified: "𠃜" },
+            { original: "嵋", simplified: "𠃜" },
+            { original: "媚", simplified: "𰋻" },
+            { original: "蒙", simplified: "苎" },
+            { original: "檬", simplified: "苎" },
+            { original: "蠓", simplified: "𰲽" },
+            { original: "面", simplified: "𫩑" },
+            { original: "缅", simplified: "𰬄" },
+            { original: "囊", simplified: "𰀉" },
+            { original: "囔", simplified: "𰀉" },
+            { original: "攮", simplified: "𰓌" },
+            { original: "青", simplified: "𰀈" },
+            { original: "静", simplified: "𰁓" },
+            { original: "靛", simplified: "𰍎" },
+            { original: "请", simplified: "𰵕" },
+            { original: "猜", simplified: "𰡂" },
+            { original: "情", simplified: "𰑊" },
+            { original: "清", simplified: "𰛓" },
+            { original: "晴", simplified: "𰕺" },
+            { original: "睛", simplified: "𰥕" },
+            { original: "靖", simplified: "𰩢" },
+            { original: "精", simplified: "𰪱" },
+            { original: "菁", simplified: "𰰫" },
+            { original: "桑", simplified: "𰗑" },
+            { original: "搡", simplified: "𰓨" },
+            { original: "嗓", simplified: "𰇢" },
+            { original: "属", simplified: "𰍱" },
+            { original: "嘱", simplified: "𰇰" },
+            { original: "瞩", simplified: "𰥩" },
+            { original: "堂", simplified: "坣" },
+            { original: "螳", simplified: "𰳇" },
+            { original: "易", simplified: "𠃓" },
+            { original: "剔", simplified: "𰄝" },
+            { original: "惕", simplified: "𰐿" },
+            { original: "赐", simplified: "𰷟" },
+            { original: "锡", simplified: "钖" },
+            { original: "踢", simplified: "𰸄" },
+            { original: "婴", simplified: "𰋷" },
+            { original: "缨", simplified: "𰬕" },
+            { original: "樱", simplified: "桜" },
+            { original: "展", simplified: "𰍰" },
+            { original: "辗", simplified: "𰍰" },
+            { original: "碾", simplified: "𰦪" },
+            { original: "真", simplified: "𰅴" },
+            { original: "颠", simplified: "𱂪" },
+            { original: "填", simplified: "𰉰" },
+            { original: "慎", simplified: "𰑝" },
+            { original: "滇", simplified: "𰛬" },
+            { original: "镇", simplified: "𰾂" },
+            { original: "直", simplified: "𰅰" },
+            { original: "值", simplified: "𰁲" },
+            { original: "植", simplified: "𰗝" },
+            { original: "殖", simplified: "𰙽" },
+            { original: "置", simplified: "𰭋" },
+            { original: "卒", simplified: "卆" },
+            { original: "悴", simplified: "忰" },
+            { original: "啐", simplified: "𠯥" },
+            { original: "碎", simplified: "砕" },
+            { original: "粹", simplified: "粋" },
+            { original: "醉", simplified: "酔" },
+            { original: "翠", simplified: "翆" },
+            { original: "瘁", simplified: "疩" },
+            { original: "尊", simplified: "𰃝" },
+            { original: "撙", simplified: "𰓢" }
+        ];
+
+        // 分页设置
+        const itemsPerPage = 20;
+        let currentPage = 1;
+        let filteredData = [...charData];
+
+        // DOM元素
+        const tableBody = document.getElementById('tableBody');
+        const pagination = document.getElementById('pagination');
+        const searchInput = document.getElementById('searchInput');
+        const searchBtn = document.getElementById('searchBtn');
+        const originalText = document.getElementById('originalText');
+        const simplifiedText = document.getElementById('simplifiedText');
+        const convertBtn = document.getElementById('convertBtn');
+
+        // 初始化表格
+        function renderTable() {
+            const startIndex = (currentPage - 1) * itemsPerPage;
+            const endIndex = startIndex + itemsPerPage;
+            const pageData = filteredData.slice(startIndex, endIndex);
+            
+            tableBody.innerHTML = '';
+            
+            pageData.forEach((item, index) => {
+                const row = document.createElement('tr');
+                const globalIndex = startIndex + index + 1;
+                
+                row.innerHTML = `
+                    <td>${globalIndex}</td>
+                    <td><span class="original-char">${item.original}</span></td>
+                    <td><span class="simplified-char">${item.simplified}</span></td>
+                    <td>已废止</td>
+                `;
+                
+                tableBody.appendChild(row);
+            });
+            
+            renderPagination();
+        }
+
+        // 渲染分页按钮
+        function renderPagination() {
+            const totalPages = Math.ceil(filteredData.length / itemsPerPage);
+            
+            pagination.innerHTML = '';
+            
+            // 上一页按钮
+            const prevButton = document.createElement('button');
+            prevButton.textContent = '上一页';
+            prevButton.disabled = currentPage === 1;
+            prevButton.addEventListener('click', () => {
+                if (currentPage > 1) {
+                    currentPage--;
+                    renderTable();
+                }
+            });
+            pagination.appendChild(prevButton);
+            
+            // 页码按钮
+            for (let i = 1; i <= totalPages; i++) {
+                const pageButton = document.createElement('button');
+                pageButton.textContent = i;
+                pageButton.classList.toggle('active', i === currentPage);
+                pageButton.addEventListener('click', () => {
+                    currentPage = i;
+                    renderTable();
+                });
+                pagination.appendChild(pageButton);
+            }
+            
+            // 下一页按钮
+            const nextButton = document.createElement('button');
+            nextButton.textContent = '下一页';
+            nextButton.disabled = currentPage === totalPages;
+            nextButton.addEventListener('click', () => {
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    renderTable();
+                }
+            });
+            pagination.appendChild(nextButton);
+        }
+
+        // 搜索功能
+        function searchCharacters() {
+            const searchTerm = searchInput.value.trim();
+            
+            if (searchTerm === '') {
+                filteredData = [...charData];
+            } else {
+                filteredData = charData.filter(item => 
+                    item.original.includes(searchTerm) || 
+                    item.simplified.includes(searchTerm)
+                );
+            }
+            
+            currentPage = 1;
+            renderTable();
+        }
+
+        // 转换功能
+        function convertText() {
+            const text = originalText.value;
+            let result = '';
+            
+            for (let char of text) {
+                const found = charData.find(item => item.original === char);
+                result += found ? found.simplified : char;
+            }
+            
+            simplifiedText.value = result;
+        }
+
+        // 事件监听
+        searchBtn.addEventListener('click', searchCharacters);
+        searchInput.addEventListener('keyup', (e) => {
+            if (e.key === 'Enter') {
+                searchCharacters();
+            }
+        });
+        
+        convertBtn.addEventListener('click', convertText);
+
+        // 初始化
+        renderTable();
+    </script>
+</body>
+</html>
