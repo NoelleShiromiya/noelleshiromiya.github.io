@@ -40,30 +40,33 @@ table {
             list-style-type: none;
             display: flex;
             flex-wrap: wrap;
-            justify-content: center;
+            justify-content: left;
         }
         
         .nav-links li {
-            margin: 0 5px;
+            margin: 0 4px;
         }
         
         .nav-links a {
             display: block;
             padding: 5px 10px;
-            background-color: #c0c0c0;
-            color: #000;
+            background-color: transparent;
+            color: #FFFFFF;
             text-decoration: none;
-            border: 2px outset #c0c0c0;
-            font-size: 14px;
+            border: none;
+            font-size: 20px;
+            
         }
         
         .nav-links a:hover {
-            background-color: #a0a0a0;
+            background-color: rgba(160, 160, 160, 0.5);
             border: 2px inset #a0a0a0;
+            border-radius: 4px;
         }
 
 .home-link {
-            background-color: #ffff00 !important;
-            color: #000 !important;
+            background-color: transparent;
+            color: #FFFFFF;
             font-weight: bold;
+            font-size: 40px;
         }
