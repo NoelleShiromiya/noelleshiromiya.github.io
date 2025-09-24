@@ -31,21 +31,16 @@ table {
 
 textarea {
     font-family: "LXGW WenKai Mono", monospace;
-    color: fieldtext;
-    letter-spacing: normal;
-    word-spacing: normal;
-    line-height: normal;
+    color: black !important;
     text-transform: none;
     text-indent: 0px;
     text-shadow: none;
     display: inline-block;
     text-align: start;
     appearance: auto;
-    -webkit-rtl-ordering: logical;
-    resize: -internal-textarea-auto;
     cursor: text;
     overflow-wrap: break-word;
-    background-color: field;
+    background-color: #fff !important;
     column-count: initial !important;
     margin: 0em 0em 0em 0em;
     border: 1px solid #7f9db9;
@@ -59,12 +54,13 @@ textarea {
 input {
     padding: 4px;
     border: 1px solid #7f9db9;
-    background-color: #fff;
+    background-color: #fff !important;
+    color: black !important;
     box-sizing: border-box;
     appearance: none;
     border-radius: 0;
     font-size: 20px;
-    line-height: 2;
+    cursor: text;
 }
 
 .navbar {
