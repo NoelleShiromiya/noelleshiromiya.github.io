@@ -29,6 +29,31 @@ table {
   box-shadow: rgba(0, 0, 0, 0.5) 0px 4px 4px;
 }
 
+textarea {
+    font-family: "LXGW WenKai Mono", monospace;
+    color: fieldtext;
+    letter-spacing: normal;
+    word-spacing: normal;
+    line-height: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    appearance: auto;
+    -webkit-rtl-ordering: logical;
+    resize: -internal-textarea-auto;
+    cursor: text;
+    overflow-wrap: break-word;
+    background-color: field;
+    column-count: initial !important;
+    margin: 0em 0em 0em 0em;
+    border: 1px solid light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+    padding: 2px;
+    white-space: pre-wrap;
+    font-size: 20px;
+}
+
 .navbar {
             background-color: #00B800;
             background: linear-gradient(180deg,rgba(0, 184, 0, 1) 0%, rgba(184, 248, 24, 1) 100%);
