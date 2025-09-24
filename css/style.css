@@ -52,6 +52,8 @@ textarea {
     padding: 2px;
     white-space: pre-wrap;
     font-size: 20px;
+    width: 600px;
+    height: 200px;
 }
 
 .navbar {
