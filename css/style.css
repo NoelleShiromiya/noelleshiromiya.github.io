@@ -48,12 +48,23 @@ textarea {
     background-color: field;
     column-count: initial !important;
     margin: 0em 0em 0em 0em;
-    border: 1px solid light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
-    padding: 2px;
+    border: 1px solid #7f9db9;
+    padding: 4px;
     white-space: pre-wrap;
     font-size: 20px;
     width: 600px;
     height: 200px;
+}
+
+input {
+    padding: 4px;
+    border: 1px solid #7f9db9;
+    background-color: #fff;
+    box-sizing: border-box;
+    appearance: none;
+    border-radius: 0;
+    font-size: 20px;
+    line-height: 2;
 }
 
 .navbar {
