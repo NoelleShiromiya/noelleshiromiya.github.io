@@ -50,6 +50,7 @@ table {
         .nav-links a {
             display: block;
             padding: 4px 8px;
+            background-color: transparent;
             color: #FFFFFF;
             text-decoration: none;
             border: none;
@@ -68,5 +69,5 @@ table {
             padding: 4px 8px;
             color: #FFFFFF;
             font-weight: bold;
-            font-size: 40px;
+            font-size: 40px !important;
         }
