@@ -21,6 +21,7 @@ table {
   background-color: black;
   color: white;
   border: solid 4px white;
+  border-radius: 1px;
   outline: solid 2px black; 
   margin-left: auto;
   margin-right: auto;
@@ -31,13 +32,12 @@ table {
 
 textarea {
     font-family: "LXGW WenKai Mono", monospace;
+    border-radius: 1px;
     color: black !important;
     text-transform: none;
     text-indent: 0px;
-    text-shadow: none;
     display: inline-block;
     text-align: start;
-    appearance: auto;
     cursor: text;
     overflow-wrap: break-word;
     background-color: #fff !important;
@@ -58,7 +58,7 @@ input {
     color: black !important;
     box-sizing: border-box;
     appearance: none;
-    border-radius: 0;
+    border-radius: 1px;
     font-size: 20px;
     cursor: text;
 }
@@ -76,9 +76,10 @@ button {
 .navbar {
             background-color: #00B800;
             background: linear-gradient(180deg,rgba(0, 184, 0, 1) 0%, rgba(184, 248, 24, 1) 100%);
-            border: 2px outset #c0c0c0;
+            border: 2px outset #00B800;
             padding: 4px;
             margin-bottom: 16px;
+            border-radius: 0px 0px 8px 8px;
         }
         
         .nav-links {
@@ -108,4 +109,5 @@ button {
             color: #FFFFFF;
             font-weight: bold;
             font-size: 40px !important;
+            text-shadow: rgba(0, 0, 0, 0.5) 0px 4px 4px;
         }
