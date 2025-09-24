@@ -49,8 +49,7 @@ table {
         
         .nav-links a {
             display: block;
-            padding: 5px 10px;
-            background-color: transparent;
+            padding: 4px 8px;
             color: #FFFFFF;
             text-decoration: none;
             border: none;
@@ -59,13 +58,14 @@ table {
         }
         
         .nav-links a:hover {
+            padding: 4px 8px;
             background-color: rgba(160, 160, 160, 0.5);
             border: 2px inset #a0a0a0;
             border-radius: 4px;
         }
 
 .home-link {
-            background-color: transparent;
+            padding: 4px 8px;
             color: #FFFFFF;
             font-weight: bold;
             font-size: 40px;
