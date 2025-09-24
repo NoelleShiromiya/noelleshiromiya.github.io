@@ -63,6 +63,16 @@ input {
     cursor: text;
 }
 
+button {
+    font-family: "LXGW WenKai";
+    font-size: 20px;
+    box-sizing: border-box;
+    border: 1px solid #003c74;
+    background: linear-gradient(180deg, #fff, #ecebe5 86%, #d8d0c4);
+    box-shadow: none;
+    border-radius: 4px;
+}
+
 .navbar {
             background-color: #00B800;
             background: linear-gradient(180deg,rgba(0, 184, 0, 1) 0%, rgba(184, 248, 24, 1) 100%);
