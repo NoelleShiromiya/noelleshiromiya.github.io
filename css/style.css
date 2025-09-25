@@ -1,4 +1,5 @@
 @import url("https://fontsapi.zeoseven.com/292/main/result.css");
+@import url("https://fontsapi.zeoseven.com/531/main/result.css");
 
 body {
     font-family: "LXGW WenKai";
@@ -36,7 +37,8 @@ th {
     color: black;
 }
 textarea {
-    font-family: "LXGW WenKai Mono", monospace;
+    font-family: "NanoDyongChyangSong CN 16";
+    font-weight: normal;
     border-radius: 1px;
     color: black !important;
     text-transform: none;
@@ -51,21 +53,22 @@ textarea {
     border: 1px solid #7f9db9;
     padding: 4px;
     white-space: pre-wrap;
-    font-size: 20px;
+    font-size: 16px;
     width: 600px;
     height: 200px;
     font-variant-emoji: text;
 }
 
 input {
-    font-family: "LXGW WenKai Mono", monospace;
+    font-family: "NanoDyongChyangSong CN 16";
+    font-weight: normal;
     border: 1px solid #7f9db9;
     background-color: #fff !important;
     color: black !important;
     box-sizing: border-box;
     appearance: none;
     border-radius: 1px;
-    font-size: 20px;
+    font-size: 16px;
     cursor: text;
     font-variant-emoji: text;
 }
