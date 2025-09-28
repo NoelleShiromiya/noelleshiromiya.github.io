@@ -20,12 +20,11 @@ body {
     background-image: url("https://noelleshiromiya.github.io/css/assets/nina-bg-export.png");
     background-repeat: repeat;
     background-attachment: fixed;
-    padding-left: 16px;
-    padding-right: 16px;
-    margin-right: auto;
-    margin-left: auto;
-    width: 100%;
+    padding: 0 16px;
+    margin: 0 auto;
     max-width: 1200px;
+    width: 100%;
+    box-sizing: border-box;
     font-variant-emoji: text;
 }
 
