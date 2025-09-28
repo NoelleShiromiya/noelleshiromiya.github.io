@@ -10,6 +10,10 @@
 @import url("https://fontsapi.zeoseven.com/292/tc-regular/result.css");
 @import url("https://fontsapi.zeoseven.com/292/tc-medium/result.css");
 @import url("https://fontsapi.zeoseven.com/292/tc-light/result.css");
+/* 导入芫茜雅楷*/
+@import url("https://fontsapi.zeoseven.com/89/bold/result.css");
+@import url("https://fontsapi.zeoseven.com/89/light/result.css");
+@import url("https://fontsapi.zeoseven.com/89/main/result.css");
 /* 导入 Unifont*/
 @import url("https://fontsapi.zeoseven.com/572/main/result.css");
 
@@ -113,7 +117,7 @@ button {
 	font-family: "LXGW WenKai GB", "LXGW WenKai";
 }
 [lang=zh-HK] { 
-	font-family: "LXGW WenKai TC", "LXGW WenKai";
+	font-family: "JyunsaiKaai", "LXGW WenKai TC", "LXGW WenKai";
 }
 [lang=zh-TW] { 
 	font-family: "LXGW WenKai TC", "LXGW WenKai"; 
