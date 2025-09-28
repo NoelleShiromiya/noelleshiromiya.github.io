@@ -1,5 +1,7 @@
 @import url("https://fontsapi.zeoseven.com/292/main/result.css");
 @import url("https://fontsapi.zeoseven.com/531/main/result.css");
+@import url("https://fontsapi.zeoseven.com/131/main/result.css");
+@import url("https://fontsapi.zeoseven.com/680/main/result.css");
 
 body {
     font-family: "LXGW WenKai";
@@ -82,6 +84,36 @@ button {
     box-shadow: none;
     border-radius: 4px;
     font-variant-emoji: text;
+}
+
+/* 以下内容来自萌娘百科 https://zh.moegirl.org.cn/index.php?diff=834104 感谢贡献！*/
+/* 版权协定：知识共享 署名-非商业性使用-相同方式共享 3.0 */
+[lang] { font-family: initial; font-feature-settings: "locl" on; -webkit-font-feature-settings: "locl" on; }
+/* 
+* 在这里使用 font-feature-settings 属性会让使用“lang”标签的元素强制使用 OpenType 技术显示本地化的变体字（通过激活 locl 标签，即便浏览器本身不直接激活）。
+* 如果你使用思源黑体（非 CN、JP、KO、TW 版）、Noto Sans CJK 显示文字的话就有可能看到效果。
+* 关于上述这个 CSS 属性的用法，参阅：https://developer.mozilla.org/en-US/docs/Web/CSS/font-feature-settings 注意：此文引用的 OpenType Feature Tags list 同样需要关注。
+*/
+[lang=zh-hant] { 
+	font-family: "Pengli WenKai", "LXGW WenKai";
+}
+[lang=zh-hans] {
+	font-family: "LXGW WenKai";
+}
+[lang=zh-CN] { 
+	font-family: "LXGW WenKai";
+}
+[lang=zh-HK] { 
+	font-family: "Pengli WenKai", "LXGW WenKai";
+}
+[lang=zh-TW] { 
+	font-family: "Pengli WenKai", "LXGW WenKai"; 
+}
+[lang=ja] { 
+	font-family: "Klee One"; 
+}
+[lang=ko] {
+	font-family: "LXGW WenKai";
 }
 
 .navbar {
