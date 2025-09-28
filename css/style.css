@@ -20,8 +20,6 @@
 @font-face {
   font-family: 'KP CheongPong';
   src: url('https://noelleshiromiya.github.io/css/assets/fonts/KP-CheongPong.woff2') format('woff2');
-  font-display: swap;
-  unicode-range: U+1100-11FF, U+3130-318F, U+AC00-D7AF;
 }
 
 body {
@@ -136,7 +134,7 @@ button {
 	font-family: "LXGW WenKai";
 }
 [lang=ko-KP] {
-	font-family: "KP CheongPong", "LXGW WenKai";
+	font-family: "KP CheongPong";
 }
 
 .navbar {
