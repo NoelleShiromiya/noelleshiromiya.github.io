@@ -1,12 +1,23 @@
+/* 导入霞鹜文楷*/
 @import url("https://fontsapi.zeoseven.com/292/main/result.css");
-@import url("https://fontsapi.zeoseven.com/531/main/result.css");
-@import url("https://fontsapi.zeoseven.com/680/main/result.css");
+@import url("https://fontsapi.zeoseven.com/292/medium/result.css");
+@import url("https://fontsapi.zeoseven.com/292/light/result.css");
+/* 导入霞鹜文楷 GB*/
+@import url("https://fontsapi.zeoseven.com/292/gb-regular/result.css");
+@import url("https://fontsapi.zeoseven.com/292/gb-medium/result.css");
+@import url("https://fontsapi.zeoseven.com/292/gb-light/result.css");
+/* 导入霞鹜文楷 TC*/
+@import url("https://fontsapi.zeoseven.com/292/tc-regular/result.css");
+@import url("https://fontsapi.zeoseven.com/292/tc-medium/result.css");
+@import url("https://fontsapi.zeoseven.com/292/tc-light/result.css");
+/* 导入 Unifont*/
+@import url("https://fontsapi.zeoseven.com/572/main/result.css");
 
 body {
-    font-family: "LXGW WenKai";
+    font-family: "LXGW WenKai GB";
     font-weight: normal;
     font-size: 20px;
-    background-image: url("assets/nina-bg-export.png");
+    background-image: url("noelleshiromiya.github.io/css/assets/nina-bg-export.png");
     background-repeat: repeat;
     background-attachment: fixed;
     padding-left: 16px;
@@ -38,7 +49,7 @@ th {
     color: black;
 }
 textarea {
-    font-family: "NanoDyongChyangSong CN 16";
+    font-family: "Unifont";
     font-weight: normal;
     border-radius: 1px;
     color: black !important;
@@ -61,7 +72,7 @@ textarea {
 }
 
 input {
-    font-family: "NanoDyongChyangSong CN 16";
+    font-family: "Unifont";
     font-weight: normal;
     border: 1px solid #7f9db9;
     background-color: #fff !important;
@@ -75,7 +86,7 @@ input {
 }
 
 button {
-    font-family: "LXGW WenKai";
+    font-family: "LXGW WenKai GB";
     font-size: 20px;
     box-sizing: border-box;
     border: 1px solid #003c74;
@@ -94,19 +105,19 @@ button {
 * 关于上述这个 CSS 属性的用法，参阅：https://developer.mozilla.org/en-US/docs/Web/CSS/font-feature-settings 注意：此文引用的 OpenType Feature Tags list 同样需要关注。
 */
 [lang=zh-hant] { 
-	font-family: "Pengli WenKai", "LXGW WenKai";
+	font-family: "LXGW WenKai TC", "LXGW WenKai";
 }
 [lang=zh-hans] {
-	font-family: "LXGW WenKai";
+	font-family: "LXGW WenKai GB", "LXGW WenKai";
 }
 [lang=zh-CN] { 
-	font-family: "LXGW WenKai";
+	font-family: "LXGW WenKai GB", "LXGW WenKai";
 }
 [lang=zh-HK] { 
-	font-family: "Pengli WenKai", "LXGW WenKai";
+	font-family: "LXGW WenKai TC", "LXGW WenKai";
 }
 [lang=zh-TW] { 
-	font-family: "Pengli WenKai", "LXGW WenKai"; 
+	font-family: "LXGW WenKai TC", "LXGW WenKai"; 
 }
 [lang=ja] { 
 	font-family: "LXGW WenKai";
