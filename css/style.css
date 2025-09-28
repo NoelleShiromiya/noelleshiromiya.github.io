@@ -1,6 +1,5 @@
 @import url("https://fontsapi.zeoseven.com/292/main/result.css");
 @import url("https://fontsapi.zeoseven.com/531/main/result.css");
-@import url("https://fontsapi.zeoseven.com/131/main/result.css");
 @import url("https://fontsapi.zeoseven.com/680/main/result.css");
 
 body {
@@ -110,7 +109,7 @@ button {
 	font-family: "Pengli WenKai", "LXGW WenKai"; 
 }
 [lang=ja] { 
-	font-family: "Klee One"; 
+	font-family: "LXGW WenKai";
 }
 [lang=ko] {
 	font-family: "LXGW WenKai";
