@@ -4,20 +4,85 @@
     <title>诺艾尔的小站 ～ 主页</title>
     <link rel="stylesheet" type="text/css" href="https://noelleshiromiya.github.io/css/style.css">
     <link rel="icon" type="image/png" href="https://noelleshiromiya.github.io/assets/nina-icon.png">
+    <style>
+        /* 添加必要的样式 */
+        .gif-container {
+            position: fixed;
+            pointer-events: none;
+            z-index: 1000;
+        }
+        
+        .gif-container img {
+            width: 150px;
+            height: auto;
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar">
-            <ul class="nav-links">
-                <li><a href="https://noelleshiromiya.github.io/" class="home-link">诺艾尔的小站</a></li>
-                <li><a href="https://noelleshiromiya.github.io/erjian.html">二简字转换器</a></li>
-              <li><a href="https://noelleshiromiya.github.io/kuzushiji.html">日语变体假名</a></li>
-            </ul>
-        </nav>
-    <img src="https://noelleshiromiya.github.io/assets/DI-chan.png" alt="ぢゆしすき111" title="ぢゆしすき111" style="display: block; margin: 0 auto;"><br>
-    <div class="ko-KP">
-        英勇한 우리 朝鮮民主主義人民共和国武力의 全体 将兵들!<br>
-        이 땅의 貴重한 모든 戦取物, 모든것의 첫자리에는 우리 革命軍隊의 貢献이 깃들어있음을 우리는 잊지 말아야 합니다.<br>
-        英雄적朝鮮人民軍을 核心으로 하는 朝鮮民主主義人民共和国의 全体 武力은 언제나 自己 偉業에 大한 信心을 굳게 하고 自信심에 넘쳐 온갖 挑戦들을 맞받아 勇敢히 나가야 하며 人民의 安寧과 尊厳, 幸福을 지키는 성스러운 自己의 使命에 忠実하고 無敵의 軍事的强勢를 틀어쥐고 우리의 社会主義発展을 튼튼히 担保해야 합니다.<br>
-        偉大한 우리 祖国 朝鮮民主主義人民共和国 万歳!
-    </div>
+        <ul class="nav-links">
+            <li><a href="https://noelleshiromiya.github.io/" class="home-link">诺艾尔的小站</a></li>
+            <li><a href="https://noelleshiromiya.github.io/erjian.html">二简字转换器</a></li>
+            <li><a href="https://noelleshiromiya.github.io/kuzushiji.html">日语变体假名</a></li>
+        </ul>
+    </nav>
+    
+    <img id="di-chan-img" src="https://noelleshiromiya.github.io/assets/DI-chan.png" alt="ぢゆしすき111" title="ぢゆしすき111" style="display: block; margin: 0 auto; cursor: pointer;"><br>
+    
+    <!-- 音频元素 -->
+    <audio id="soundEffect" preload="auto">
+        <source src="https://noelleshiromiya.github.io/assets/snd-badexplosion.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const diChanImg = document.getElementById('di-chan-img');
+            const soundEffect = document.getElementById('soundEffect');
+            
+            // 点击事件处理
+            diChanImg.addEventListener('click', function(e) {
+                // 播放音效
+                playSound();
+                
+                // 显示GIF
+                showGif(e);
+            });
+            
+            // 播放音效
+            function playSound() {
+                // 重置音频以便可以连续播放
+                soundEffect.currentTime = 0;
+                soundEffect.play().catch(e => {
+                    console.log('音频播放失败:', e);
+                });
+            }
+            
+            // 显示GIF
+            function showGif(e) {
+                // 创建GIF容器
+                const gifContainer = document.createElement('div');
+                gifContainer.className = 'gif-container';
+                
+                // 设置位置（稍微偏移使鼠标在GIF中心）
+                gifContainer.style.left = (e.pageX - 75) + 'px';
+                gifContainer.style.top = (e.pageY - 75) + 'px';
+                
+                // 创建GIF图像
+                const gifImg = document.createElement('img');
+                gifImg.src = 'https://noelleshiromiya.github.io/assets/RealisticExplosion.gif';
+                gifImg.alt = '爆炸效果';
+                
+                // 添加到容器
+                gifContainer.appendChild(gifImg);
+                
+                // 添加到页面
+                document.body.appendChild(gifContainer);
+                
+                // 25帧（60帧时基）≈ 0.4167秒，我们使用0.45秒后移除
+                setTimeout(() => {
+                    gifContainer.remove();
+                }, 450);
+            }
+        });
+    </script>
 </body>
