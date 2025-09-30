@@ -26,67 +26,6 @@
         </ul>
     </nav>
     
-        <img id="di-chan-img" src="https://noelleshiromiya.github.io/assets/DI-chan.png" alt="ぢゆしすき111" title="ぢゆしすき111" style="display: block; margin: 0 auto; cursor: pointer;>
-    <!-- 音频元素 -->
-    <audio id="soundEffect" preload="auto">
-        <source src="https://noelleshiromiya.github.io/assets/snd-badexplosion.mp3" type="audio/mpeg">
-    </audio>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const diChanImg = document.getElementById('di-chan-img');
-            const soundEffect = document.getElementById('soundEffect');
-            
-            // 点击事件处理
-            diChanImg.addEventListener('click', function(e) {
-                // 播放音效
-                playSound();
-                
-                // 显示GIF
-                showGif(e);
-            });
-            
-            // 播放音效
-            function playSound() {
-                // 重置音频以便可以连续播放
-                soundEffect.currentTime = 0;
-                soundEffect.play().catch(e => {
-                    console.log('音频播放失败:', e);
-                });
-            }
-            
-            // 显示GIF
-            function showGif(e) {
-                // 创建GIF容器
-                const gifContainer = document.createElement('div');
-                gifContainer.className = 'gif-container';
-                
-                // 设置位置（稍微偏移使鼠标在GIF中心）
-                gifContainer.style.left = (e.pageX - 100) + 'px';
-                gifContainer.style.top = (e.pageY - 100) + 'px';
-                
-                // 创建GIF图像
-                const gifImg = document.createElement('img');
-                gifImg.src = 'https://noelleshiromiya.github.io/assets/RealisticExplosion.gif';
-                gifImg.alt = '爆炸效果';
-                
-                // 添加到容器
-                gifContainer.appendChild(gifImg);
-                
-                // 添加到页面
-                document.body.appendChild(gifContainer);
-                
-                // 监听GIF加载完成
-                gifImg.onload = function() {
-                    // 获取GIF的总时长（25帧，60帧时基）
-                    const gifDuration = (25 / 60) * 1000; // 转换为毫秒
-                    
-                    // 在GIF播放完毕后移除
-                    setTimeout(() => {
-                        gifContainer.remove();
-                    }, gifDuration);
-                };
-            }
-        });
-    </script>
+        <img id="di-chan-img" src="https://noelleshiromiya.github.io/assets/DI-chan.png" alt="ぢゆしすき111" title="这是我喜欢的DIYUSI，不过DIYUSI倒是跟NEL和死相那些人相处的不错……" style="display: block; margin: 0 auto; cursor: help;>
+    
 </body>
