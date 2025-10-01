@@ -1,0 +1,131 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hu Chen Feng Is Waching You!</title>
+    <link rel="stylesheet" type="text/css" href="https://noelleshiromiya.github.io/css/style.css">
+    <link rel="icon" type="image/png" href="https://noelleshiromiya.github.io/assets/nina-icon.png">
+    
+</head>
+<body>
+    <nav class="navbar">
+        <ul class="nav-links">
+            <li><a href="https://noelleshiromiya.github.io/" class="home-link">诺艾尔的小站</a></li>
+            <li><a href="https://noelleshiromiya.github.io/erjian.html">二简字转换器</a></li>
+            <li><a href="https://noelleshiromiya.github.io/kuzushiji.html">日语变体假名</a></li>
+            <li><a href="https://noelleshiromiya.github.io/huchenfeng.html">户晨风视监器</a></li>
+        </ul>
+    </nav>
+    <div>
+        <h1>户晨风在看着你 ～ Hu Chen Feng Is Waching You!</h1>
+        <p class="description">你是哪种用户？</p>
+        
+        <div id="identityCard">
+            <div>
+                <span id="identityIcon" >🔍</span>
+                <span id="identityText">正在视监中……</span>
+            </div>
+            <p id="identityDescription">我正在视监你的设备！</p>
+        </div>
+        
+        <div>
+            <h2>设备详细信息</h2>
+            <div>
+                <div><strong>操作系统:</strong> <span id="osInfo">视监中……</span></div>
+                <div><strong>浏览器:</strong> <span id="browserInfo">视监中……</span></div>
+                <div><strong>设备类型:</strong> <span id="deviceType">视监中……</span></div>
+                <div><strong>用户代理:</strong> <span id="userAgent">视监中……</span></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const identityCard = document.getElementById('identityCard');
+            const identityText = document.getElementById('identityText');
+            const identityIcon = document.getElementById('identityIcon');
+            const identityDescription = document.getElementById('identityDescription');
+            const osInfo = document.getElementById('osInfo');
+            const browserInfo = document.getElementById('browserInfo');
+            const deviceType = document.getElementById('deviceType');
+            const userAgent = document.getElementById('userAgent');
+            
+            // 获取用户代理字符串
+            const ua = navigator.userAgent;
+            userAgent.textContent = ua.length > 50 ? ua.substring(0, 50) + '...' : ua;
+            
+            // 检测操作系统
+            let os = '未知操作系统';
+            let device = '未知设备';
+            
+            if (/iPhone|iPad|iPod/i.test(ua)) {
+                os = 'iOS';
+                device = /iPhone/i.test(ua) ? 'iPhone' : /iPad/i.test(ua) ? 'iPad' : 'iPod';
+            } else if (/Macintosh|Mac OS X/i.test(ua)) {
+                os = 'macOS';
+                device = '苹果电脑';
+            } else if (/Windows/i.test(ua)) {
+                os = 'Windows';
+                device = '跟我家苹果电脑是死对头的系统';
+            } else if (/Android/i.test(ua)) {
+                os = 'Android';
+                device = /Mobile/i.test(ua) ? '狗都不用的系统' : 'Android平板';
+            } else if (/Linux/i.test(ua)) {
+                os = 'Linux';
+                device = '狗都不用的系统';
+            }
+            
+            osInfo.textContent = os;
+            deviceType.textContent = device;
+            
+            // 检测浏览器
+            let browser = '未知浏览器';
+            if (/Edg/i.test(ua)) {
+                browser = '私有化的Chrome浏览器';
+            } else if (/Chrome/i.test(ua)) {
+                browser = '安卓企业安卓思维的Chrome浏览器';
+            } else if (/Firefox/i.test(ua)) {
+                browser = '安卓思维的火狐浏览器';
+            } else if (/Safari/i.test(ua)) {
+                browser = '我们苹果人的Safari浏览器';
+            } else if (/Opera|OPR/i.test(ua)) {
+                browser = '私人才用的Opera浏览器';
+            }
+            
+            browserInfo.textContent = browser;
+            
+            // 根据操作系统显示身份
+            let identity, icon, description;
+            
+            if (os === 'iOS' || os === 'macOS') {
+                identity = '你永远是是苹果人！！！';
+                icon = '🍎';
+                description = '户晨风永远相信你们对Apple做出的贡献！';
+            } else if (os === 'Android' || os === 'Linux') {
+                identity = '无语，跟你安卓人聊不下去，典型的安卓思维';
+                icon = '🤖';
+                description = '你就是典型的安卓逻辑、安卓学历、安卓人、安卓素质、安卓语法、安卓态度、安卓学校、安卓手机、安卓电脑、安卓平板，纯纯的安卓人生！！！！！';
+            } else if (os === 'Windows') {
+                identity = '无语，跟你聊不下去，典型的苹果死对头思维';
+                icon = '🪟';
+                description = '跟我家苹果是死对头，一看就知道是那批安卓人的帮凶，给我滚出去！！！';
+            } else {
+                identity = '虽然我真的看不清楚。';
+                icon = '❓';
+                description = '但是我怀疑你是真正的安卓人……';
+            }
+            
+            // 延迟显示结果，增强体验
+            setTimeout(() => {
+                identityCard.classList.remove('pulse');
+                identityText.textContent = identity;
+                identityIcon.textContent = icon;
+                identityDescription.textContent = description;
+                
+                // 添加激活动画
+                setTimeout(() => {
+                    identityCard.classList.add('active');
+                }, 100);
+            }, 1500);
+        });
+    </script>
+</body>
